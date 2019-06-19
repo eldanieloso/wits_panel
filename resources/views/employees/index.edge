@@ -8,7 +8,7 @@
 </head>
 <body>
     <a href="{{route('index')}}">Volver</a>
-    <h1>Empleados</h1>
+    <h1>Empleados</h1> <a href="{{route('employees.create')}}"> Agregar </a>
     <div>
         @each(employee in employees)
             <div>
@@ -16,6 +16,11 @@
                 <b>Puesto: </b> <span> {{employee.position}} </span>
                 <br>
                 <b>Sueldo: </b> <span>${{employee.salary}}</span>
+                <br>
+                <form action="{{route('employees.destroy', {id: employee.id})}}" method="POST">
+                    {{ csrfField() }}
+                    <input type="submit" value="Eliminar">
+                </form>
                 <br>
             </div>
         @endeach
