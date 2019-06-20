@@ -16,7 +16,15 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.get('/', 'IndexController.index').as("index")
+Route.get('/login', "AuthController.loginForm").as("loginForm")
+Route.post('/login/auth', "AuthController.login").as("login")
+Route.get('/logout', "AuthController.logout").as("logout")
 
-//Employees
-Route.resource("employees", "EmployeeController")
+Route.group('auth', () => {
+
+    Route.get('/', 'IndexController.index').as("index")
+
+    //Employees
+    Route.resource("employees", "EmployeeController")
+
+}).middleware('auth')
