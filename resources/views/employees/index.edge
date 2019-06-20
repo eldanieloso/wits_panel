@@ -8,6 +8,10 @@
 </head>
 <body>
     <a href="{{route('index')}}">Volver</a>
+    @if(flashMessage('message'))
+        <br>
+        <span>{{ flashMessage('message') }}</span>
+    @endif
     <h1>Empleados</h1> <a href="{{route('employees.create')}}"> Agregar </a>
     <div>
         @each(employee in employees)
@@ -17,7 +21,9 @@
                 <br>
                 <b>Sueldo: </b> <span>${{employee.salary}}</span>
                 <br>
-                <form action="{{route('employees.destroy', {id: employee.id})}}" method="POST">
+                <a href="{{route('employees.edit', {id:employee.id})}}">Editar</a>
+                <br>
+                <form action="{{ 'employees/' + employee.id + '?_method=DELETE' }}" method="POST">
                     {{ csrfField() }}
                     <input type="submit" value="Eliminar">
                 </form>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wits Panel</title>
+</head>
+<body>
+    <a href="{{route('employees.index')}}">Volver</a>
+    <h1>Editar Empleado</h1>
+    <div>
+        <form action="{{ '/employees/' + employee.id + '?_method=PATCH' }}" method="post">
+            {{ csrfField() }}
+            <input name="name" placeholder="Nombre" type="text" value="{{employee.name}}">
+            <br>
+            <input name="position" placeholder="Puesto" type="text" value="{{employee.position}}">
+            <br>
+            <input name="salary" placeholder="Salario" type="number" value="{{employee.salary}}">
+            <br>
+            <input type="submit" value="Editar">
+        </form>
+    </div>
+</body>
+</html>
