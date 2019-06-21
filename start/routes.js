@@ -20,11 +20,7 @@ Route.get('/login', "AuthController.loginForm").as("loginForm")
 Route.post('/login/auth', "AuthController.login").as("login")
 Route.get('/logout', "AuthController.logout").as("logout")
 
-Route.group('auth', () => {
-
-    Route.get('/', 'IndexController.index').as("index")
+Route.get('/', 'IndexController.index').as("index").middleware("auth")
 
     //Employees
-    Route.resource("employees", "EmployeeController")
-
-}).middleware('auth')
+Route.resource("employees", "EmployeeController").middleware("auth")

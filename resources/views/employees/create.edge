@@ -1,25 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Wits Panel</title>
-</head>
-<body>
-    <a href="{{route('employees.index')}}">Volver</a>
-    <h1>Agregar Empleado</h1>
-    <div>
-        <form action="{{route('employees.store')}}" method="post">
-            {{ csrfField() }}
-            <input name="name" placeholder="Nombre" type="text">
-            <br>
-            <input name="position" placeholder="Puesto" type="text">
-            <br>
-            <input name="salary" placeholder="Salario" type="number">
-            <br>
-            <input type="submit" value="Agregar">
-        </form>
-    </div>
-</body>
-</html>
+@layout('layouts.main')
+@section('content')
+<h1>Agregar Empleado</h1>
+<div>
+    <form action="{{route('employees.store')}}" method="post">
+        {{ csrfField() }}
+        <input name="name" placeholder="Nombre" type="text">
+        <br>
+        <input name="position" placeholder="Puesto" type="text">
+        <br>
+        <input name="salary" placeholder="Salario" type="number">
+        <br>
+        <input type="submit" value="Agregar">
+    </form>
+</div>
+@endsection

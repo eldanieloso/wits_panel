@@ -1,35 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Wits Panel</title>
-</head>
-<body>
-    <a href="{{route('index')}}">Volver</a>
-    @if(flashMessage('message'))
-        <br>
-        <span>{{ flashMessage('message') }}</span>
-    @endif
-    <h1>Empleados</h1> <a href="{{route('employees.create')}}"> Agregar </a>
-    <div>
-        @each(employee in employees)
-            <div>
-                <h3>{{employee.name}}</h3>
-                <b>Puesto: </b> <span> {{employee.position}} </span>
-                <br>
-                <b>Sueldo: </b> <span>${{employee.salary}}</span>
-                <br>
-                <a href="{{route('employees.edit', {id:employee.id})}}">Editar</a>
-                <br>
-                <form action="{{ 'employees/' + employee.id + '?_method=DELETE' }}" method="POST">
-                    {{ csrfField() }}
-                    <input type="submit" value="Eliminar">
-                </form>
-                <br>
-            </div>
-        @endeach
-    </div>
-</body>
-</html>
+@layout('layouts.main')
+
+@section('content')
+@if(flashMessage('message'))
+    <br>
+    <span>{{ flashMessage('message') }}</span>
+@endif
+<h1>Empleados</h1> <a href="{{route('employees.create')}}"> Agregar </a>
+<div>
+    @each(employee in employees)
+        <div>
+            <h3>{{employee.name}}</h3>
+            <b>Puesto: </b> <span> {{employee.position}} </span>
+            <br>
+            <b>Sueldo: </b> <span>${{employee.salary}}</span>
+            <br>
+            <a href="{{route('employees.edit', {id:employee.id})}}">Editar</a>
+            <br>
+            <form action="{{ 'employees/' + employee.id + '?_method=DELETE' }}" method="POST">
+                {{ csrfField() }}
+                <input type="submit" value="Eliminar">
+            </form>
+            <br>
+        </div>
+    @endeach
+</div>
+@endsection

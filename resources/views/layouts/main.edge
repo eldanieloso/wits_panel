@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Wits Panel</title>
+
+    <!-- Bootstrap -->
+    <link href="{{assetsUrl('vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{{assetsUrl('vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{{assetsUrl('vendors/nprogress/nprogress.css')}}" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="{{assetsUrl('css/custom.min.css')}}" rel="stylesheet">
+
+    <link rel="shortcut icon" href="{{assetsUrl('wits.png')}}" type="image/x-icon">
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="{{route('index')}}" class="site_title"><img src="{{assetsUrl('wits.png')}}" width="15%" alt="W"> <span> Wits Panel</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>Módulos</h3>
+                <ul class="nav side-menu">                
+                  <li><a href="{{route('employees.index')}}"><i class="fa fa-laptop"></i> Empleados</a></li>
+                </ul>
+              </div>
+
+            </div>
+            <!-- /sidebar menu -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="{{assetsUrl('wits.png')}}" alt=""> {{ auth.user.name }}
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="{{route('logout')}}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+
+            <div class="clearfix"></div>
+
+            <br>
+
+            @!section('content')
+            
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Made by @eldanieloso with AdonisJs
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+    <!-- jQuery -->
+
+    <script src="{{assetsUrl('vendors/jquery/dist/jquery.min.js')}}"></script>
+    <!-- Bootstrap -->
+    <script src="{{assetsUrl('vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <!-- FastClick -->
+    <script src="{{assetsUrl('vendors/fastclick/lib/fastclick.js')}}"></script>
+    <!-- NProgress -->
+    <script src="{{assetsUrl('vendors/nprogress/nprogress.js')}}"></script>
+    
+    <!-- Custom Theme Scripts -->
+    <script src="{{assetsUrl('js/custom.min.js')}}"></script>
+  </body>
+</html>
