@@ -17,11 +17,12 @@ class EmployeeController {
 
     }
 
-    async store({request, response}) {
+    async store({request, response, session}) {
 
         let employee = request._body
         delete employee._csrf
         await Employee.create(employee)
+        session.flash({ message: 'Empleado agregado correctamente!' })
         return response.route("employees.index")
 
     }

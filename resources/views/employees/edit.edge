@@ -1,17 +1,49 @@
 @layout('layouts.main')
 
 @section('content')
-<h1>Editar Empleado</h1>
-<div>
-    <form action="{{ '/employees/' + employee.id + '?_method=PATCH' }}" method="post">
-        {{ csrfField() }}
-        <input name="name" placeholder="Nombre" type="text" value="{{employee.name}}">
-        <br>
-        <input name="position" placeholder="Puesto" type="text" value="{{employee.position}}">
-        <br>
-        <input name="salary" placeholder="Salario" type="number" value="{{employee.salary}}">
-        <br>
-        <input type="submit" value="Editar">
-    </form>
-</div>
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Editar Empleado</h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <br>
+            <form action="{{ '/employees/' + employee.id + '?_method=PATCH' }}" method="post" class="form-horizontal form-label-left">
+                {{ csrfField() }}
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                        Nombre 
+                        <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input name="name" type="text" id="name" required="required" class="form-control col-md-7 col-xs-12" value="{{employee.name}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="position">
+                        Puesto 
+                        <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input name="position" type="text" id="position" required="required" class="form-control col-md-7 col-xs-12" value="{{employee.position}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="position">
+                        Salario 
+                        <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input name="salary" type="number" id="salary" required="required" class="form-control col-md-7 col-xs-12" value="{{employee.salary}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                        <a href="{{route('employees.index')}}" class="btn btn-link">Cancelar</a>
+                        <button type="submit" class="btn btn-info">Editar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 @endsection

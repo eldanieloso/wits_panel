@@ -1,27 +1,77 @@
 @layout('layouts.main')
 
 @section('content')
-@if(flashMessage('message'))
+
+    <div class="title_left">
+        <h3>Empleados</h3>
+    </div>
+
+    <a href="{{route('employees.create')}}"> Agregar </a>
     <br>
-    <span>{{ flashMessage('message') }}</span>
-@endif
-<h1>Empleados</h1> <a href="{{route('employees.create')}}"> Agregar </a>
-<div>
-    @each(employee in employees)
-        <div>
-            <h3>{{employee.name}}</h3>
-            <b>Puesto: </b> <span> {{employee.position}} </span>
-            <br>
-            <b>Sueldo: </b> <span>${{employee.salary}}</span>
-            <br>
-            <a href="{{route('employees.edit', {id:employee.id})}}">Editar</a>
-            <br>
-            <form action="{{ 'employees/' + employee.id + '?_method=DELETE' }}" method="POST">
-                {{ csrfField() }}
-                <input type="submit" value="Eliminar">
-            </form>
-            <br>
-        </div>
-    @endeach
-</div>
+
+    <br>
+
+    <div class="row">
+        @each(employee in employees)
+            <div class="col-md-3 col-xs-12 widget widget_tally_box">
+                <div class="x_panel">
+                    <div class="x_content">
+                        <div class="flex">
+                            <ul class="list-inline widget_profile_box">
+                                <li>
+                                    <a href="{{route('employees.edit', {id:employee.id})}}">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                </li>
+                                <li style="padding-left: 20px">
+                                    <img src="{{assetsUrl('wits.png')}}" alt="..." class="img-circle profile_img">
+                                </li>
+                                <li>
+                                    <a href="#" class="delete-employee" data-id="{{employee.id}}">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <h3 class="name" style="margin-bottom: 5px">
+                            {{employee.name}}
+                        </h3>
+                        <p>
+                            {{employee.position}}
+                        </p>
+                        <div class="flex">
+                            <ul class="list-inline count2">
+                                <li>
+                                    <h3>2</h3>
+                                    <span>Issues</span>
+                                </li>
+                                <li>
+                                    <h3>${{employee.salary}}</h3>
+                                    <span>Salario</span>
+                                </li>
+                                <li>
+                                    <h3>1</h3>
+                                    <span>Proyectos</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endeach
+    </div>
+
+    <form id="delete-form" action="{{ 'employees/' + employee.id + '?_method=DELETE' }}" method="POST">
+        {{ csrfField() }}
+    </form>
+
+@endsection
+
+@section('script')
+    <script>
+        $(".delete-employee").click(function(){
+            $("#delete-form").attr("action", 'employees/' + $(this).data("id") + '?_method=DELETE' )
+            $("#delete-form").submit()
+        })
+    </script>
 @endsection

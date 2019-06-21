@@ -40,7 +40,7 @@
               <div class="menu_section">
                 <h3>Módulos</h3>
                 <ul class="nav side-menu">                
-                  <li><a href="{{route('employees.index')}}"><i class="fa fa-laptop"></i> Empleados</a></li>
+                  <li><a href="{{route('employees.index')}}"><i class="fa fa-users"></i> Empleados</a></li>
                 </ul>
               </div>
 
@@ -106,5 +106,15 @@
     
     <!-- Custom Theme Scripts -->
     <script src="{{assetsUrl('js/custom.min.js')}}"></script>
+    @if(flashMessage('message'))
+      <script>
+          $().ready(function () {
+              setTimeout(() => {
+                  alert("{{ flashMessage('message') }}")
+              }, 500);
+          })
+      </script>
+    @endif
+    @!section('script')
   </body>
 </html>
