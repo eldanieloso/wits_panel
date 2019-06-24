@@ -6,9 +6,6 @@
         <h3>Empleados</h3>
     </div>
 
-    <a href="{{route('employees.create')}}"> Agregar </a>
-    <br>
-
     <br>
 
     <div class="row">
@@ -42,16 +39,12 @@
                         <div class="flex">
                             <ul class="list-inline count2">
                                 <li>
-                                    <h3>2</h3>
-                                    <span>Issues</span>
                                 </li>
                                 <li>
                                     <h3>${{employee.salary}}</h3>
                                     <span>Salario</span>
                                 </li>
                                 <li>
-                                    <h3>1</h3>
-                                    <span>Proyectos</span>
                                 </li>
                             </ul>
                         </div>
@@ -59,6 +52,17 @@
                 </div>
             </div>
         @endeach
+        <a href="{{route('employees.create')}}">
+            <div style="height:302px" class="col-md-3 col-xs-12 widget widget_tally_box">
+                <div class="x_panel" style="height: 287px">
+                    <div class="x_content">
+                        <div style="text-align: center; padding-top: 50px">
+                            <h1><i class="fa fa-plus-circle"></i> <br> Agregar empleado</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
     </div>
 
     <form id="delete-form" action="{{ 'employees/' + employee.id + '?_method=DELETE' }}" method="POST">

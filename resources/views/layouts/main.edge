@@ -19,6 +19,8 @@
     <!-- Custom Theme Style -->
     <link href="{{assetsUrl('css/custom.min.css')}}" rel="stylesheet">
 
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
     <link rel="shortcut icon" href="{{assetsUrl('wits.png')}}" type="image/x-icon">
   </head>
 
@@ -106,12 +108,13 @@
     
     <!-- Custom Theme Scripts -->
     <script src="{{assetsUrl('js/custom.min.js')}}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     @if(flashMessage('message'))
       <script>
           $().ready(function () {
-              setTimeout(() => {
-                  alert("{{ flashMessage('message') }}")
-              }, 500);
+            toastr.options.closeButton = true
+            toastr.options.progressBar = true
+            toastr.info("{{ flashMessage('message') }}")
           })
       </script>
     @endif
