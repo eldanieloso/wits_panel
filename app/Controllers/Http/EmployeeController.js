@@ -48,6 +48,7 @@ class EmployeeController {
         employee.name = body.name
         employee.position = body.position
         employee.salary = body.salary
+        employee.photo = body.photo
 
         await employee.save()
 
